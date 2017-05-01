@@ -1,3 +1,5 @@
+const webpack = require('webpack')
+
 module.exports = {
   entry: [
     './src/index.js'
@@ -7,6 +9,11 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js'
   },
+  plugins: [
+  new webpack.DefinePlugin({
+    __API_KEY__: JSON.stringify(process.env.API_KEY)
+  })
+  ],
   module: {
     loaders: [{
       exclude: /node_modules/,
